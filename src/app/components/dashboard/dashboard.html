@@ -1,0 +1,232 @@
+<main class="min-h-screen bg-slate-950 text-slate-100">
+  <div class="mx-auto max-w-7xl px-6 py-8">
+
+    <!-- Dashboard Header -->
+    <header class="mb-10">
+      <p class="mb-2 text-sm font-medium tracking-wider text-[#842B49]">
+        PERSONAL FINANCE
+      </p>
+      <h1 class="text-3xl font-bold tracking-tight">
+        Dashboard
+      </h1>
+      <p class="mt-2 text-slate-400">
+        Finansal durumunu tek bir yerden takip et.
+      </p>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="grid grid-cols-1 gap-5 md:grid-cols-3">
+
+      <!-- Balance -->
+      <div
+        class="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 hover:shadow-xl">
+        <div class="flex items-center justify-between">
+          <p class="text-sm text-slate-400">Total Balance</p>
+          <div class="rounded-xl bg-violet-500/10 p-3 text-violet-400">
+            <svg lucideWallet class="h-6 w-6"></svg>
+          </div>
+        </div>
+        <h2 class="mt-4 text-3xl font-bold">
+          {{ transactionService.balance() }} TL
+        </h2>
+      </div>
+
+      <!-- Income -->
+      <div
+        class="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 hover:shadow-xl">
+        <div class="flex items-center justify-between">
+          <p class="text-sm text-slate-400">Total Income</p>
+          <div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-400">
+            <svg lucideTrendingUp class="h-6 w-6"></svg>
+          </div>
+        </div>
+        <h2 class="mt-4 text-3xl font-bold text-emerald-400">
+          +{{ transactionService.totalInCome() }} TL
+        </h2>
+      </div>
+
+      <!-- Expense -->
+      <div
+        class="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 hover:shadow-xl">
+        <div class="flex items-center justify-between">
+          <p class="text-sm text-slate-400">Total Expense</p>
+          <div class="rounded-xl bg-rose-500/10 p-3 text-rose-400">
+            <svg lucideTrendingDown class="h-6 w-6"></svg>
+          </div>
+        </div>
+        <h2 class="mt-4 text-3xl font-bold text-rose-400">
+          -{{ transactionService.totalExpense() }} TL
+        </h2>
+      </div>
+
+    </section>
+
+    <!-- Main Dashboard Layout -->
+    <div class="mt-8 grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+
+      <!-- Left Column -->
+      <div class="min-w-0 space-y-6">
+
+        <!-- Filters -->
+        <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+
+          <div class="mb-5">
+            <h2 class="text-lg font-semibold">Filter Transactions</h2>
+            <p class="mt-1 text-sm text-slate-400">
+              İşlemlerini türüne ve kategorisine göre filtrele.
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
+
+            <!-- Type Filters -->
+            <div class="flex flex-wrap gap-2">
+              <button
+                class="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:bg-slate-800
+                   focus:bg-slate-400
+            focus:text-white"
+                (click)="transactionService.filterType.set('all')">
+                Tümü
+              </button>
+
+              <button class="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400
+            focus:bg-emerald-400
+            focus:text-white" (click)="transactionService.filterType.set('income')">
+                Gelirler
+              </button>
+
+              <button class="rounded-lg border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-rose-500/50 hover:bg-rose-500/10 hover:text-rose-400
+              focus:bg-rose-400
+              focus:text-white
+            " (click)="transactionService.filterType.set('expense')">
+                Giderler
+              </button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap items-center gap-2">
+              <select name="category"
+                class="min-w-0 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-violet-500"
+                [ngModel]="transactionService.categoryFilter()"
+                (ngModelChange)="transactionService.categoryFilter.set($event)">
+
+                <option value="all">Tüm kategoriler</option>
+                <option value="Food">Yemek</option>
+                <option value="Transport">Ulaşım</option>
+                <option value="Salary">Maaş</option>
+                <option value="Entertainment">Eğlence</option>
+              </select>
+
+              <button class="rounded-lg border px-3 py-2 text-sm
+            text-[#842B49] transition hover:text-blue-400" (click)="transactionService.clearFilters()">
+                Temizle
+              </button>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Recent Transactions -->
+        <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+
+          <div class="mb-6">
+            <h2 class="text-xl font-semibold">Recent Transactions</h2>
+            <p class="mt-1 text-sm text-slate-400">
+              Son finansal hareketlerin
+            </p>
+          </div>
+
+          <div class="space-y-3">
+
+            @for (transaction of transactionService.filteredTransaction(); track transaction.id) {
+
+            <div
+              class="flex flex-col gap-4 rounded-xl border border-slate-800 bg-slate-950/70 p-4 transition-colors hover:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
+
+              <!-- Transaction Info -->
+              <div class="min-w-0">
+                <h3 class="truncate font-medium text-slate-100">
+                  {{ transaction.title }}
+                </h3>
+                <p class="mt-1 text-sm text-slate-400">
+                  {{ transaction.category }}
+                </p>
+              </div>
+
+              <!-- Amount & Actions -->
+              <div class="flex flex-wrap items-center justify-between gap-3 sm:justify-end">
+
+                <span class="font-semibold whitespace-nowrap" [class.text-emerald-400]="transaction.type === 'income'"
+                  [class.text-rose-400]="transaction.type === 'expense'">
+
+                  {{ transaction.type === 'income' ? '+' : '-' }}
+                  {{ transaction.amount }} TL
+                </span>
+
+                <div class="flex gap-2">
+                  <button
+                    class="rounded-lg border border-slate-700 px-3 py-2 text-sm text-slate-300 transition hover:bg-slate-800"
+                    (click)="selectedTransactionId.set(transaction.id)">
+                    Düzenle
+                  </button>
+
+                  <button
+                    class="rounded-lg border border-rose-500/20 px-3 py-2 text-sm text-rose-400 transition hover:bg-rose-500/10"
+                    (click)="transactionService.deleteTransaction(transaction.id)">
+                    Sil
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            } @empty {
+
+            <div class="rounded-xl border border-dashed border-slate-700 p-8 text-center">
+              <p class="text-slate-400">
+                Bu filtreye uygun bir işlem bulunamadı.
+              </p>
+            </div>
+
+            }
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Right Column: Add Transaction -->
+      <aside class="w-full lg:sticky lg:top-6">
+        <app-add-transaction></app-add-transaction>
+      </aside>
+
+    </div>
+
+    <!-- Edit Transaction -->
+    @if (selectedTransactionId()) {
+
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
+
+      <!-- Modal Content -->
+      <div class="relative w-full max-w-lg  duration-200" role="dialog" aria-modal="true" aria-label="İşlemi güncelle">
+
+        <!-- Close Button -->
+        <button type="button"
+          class="absolute right-4 top-4 z-10 rounded-lg p-2 text-slate-400 transition hover:bg-slate-800 hover:text-white"
+          aria-label="Pencereyi kapat" (click)="selectedTransactionId.set(null)">
+          ✕
+        </button>
+
+        <app-edit-transaction [transactionId]="selectedTransactionId()!"
+          (updateCompleted)="selectedTransactionId.set(null)">
+        </app-edit-transaction>
+
+      </div>
+
+    </div>
+
+    }
+
+
+  </div>
+</main>

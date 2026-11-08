@@ -1,59 +1,148 @@
-# ExpenseTracker
+# 💰 Harcama Takip Uygulaması
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.5.
+Bu proje, kişisel gelir ve giderlerin takip edilebilmesi amacıyla geliştirilmiş basit ve kullanıcı dostu bir harcama takip uygulamasıdır.
 
-## Development server
+Uygulama sayesinde kullanıcılar gelir ve gider işlemlerini ekleyebilir, düzenleyebilir, silebilir ve finansal durumlarını tek bir ekran üzerinden takip edebilir.
 
-To start a local development server, run:
+Proje, Angular ve Tailwind CSS kullanılarak geliştirilmiştir. Verilerin saklanması için tarayıcının Local Storage özelliğinden yararlanılmıştır.
+
+## 📸 Uygulama Görselleri
+
+### Ana Sayfa (Dashboard)
+
+![DashBoard](expense-tracker/screenshots/anasayfa.png)
+
+### İşlem Listesi ve Filtreleme
+
+![Transactions](expense-tracker/screenshots/liste.png)
+
+![Transactions](expense-tracker/screenshots/gelirFiltresi.png)
+
+![Transactions](expense-tracker/screenshots/giderFiltresi.png)
+
+### İşlem Ekleme
+
+![Add_Transactions](expense-tracker/screenshots/yeniEkle.png)
+
+### İşlem Güncelleme
+
+![Update_Transactions](expense-tracker/screenshots/guncelle.png)
+
+---
+
+## 🚀 Özellikler
+
+- **Gelir ve Gider Takibi:** Gelir ve gider işlemleri ayrı ayrı kaydedilebilir.
+- **Dashboard:** Toplam bakiye, toplam gelir ve toplam gider bilgileri görüntülenebilir.
+- **İşlem Ekleme:** Yeni gelir veya gider işlemleri oluşturulabilir.
+- **İşlem Düzenleme:** Daha önce eklenen işlemler güncellenebilir.
+- **İşlem Silme:** İstenmeyen işlemler silinebilir.
+- **Filtreleme:** İşlemler tümü, gelir ve gider seçeneklerine göre filtrelenebilir.
+- **Veri Saklama:** İşlemler Local Storage kullanılarak tarayıcıda saklanır.
+- **Form Kontrolleri:** Boş alanların gönderilmesi engellenir.
+- **Dinamik Hesaplama:** Gelir, gider ve toplam bakiye değerleri otomatik olarak hesaplanır.
+
+## 🛠️ Kullanılan Teknolojiler
+
+- **Angular:** Uygulamanın frontend geliştirme altyapısı.
+- **TypeScript:** Uygulama içerisindeki programlama dili.
+- **Tailwind CSS:** Arayüz tasarımı ve stillendirme.
+- **Lucide Angular:** İkonların kullanımı.
+- **Local Storage:** Verilerin tarayıcı üzerinde saklanması.
+
+## 📁 Proje Yapısı
+
+```text
+expense-tracker/
+│
+├── public/
+│
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── dashboard/
+│   │   │   ├── add-transaction/
+│   │   │   └── edit-transaction/
+│   │   │
+│   │   ├── services/
+│   │   ├── models/
+│   │   ├── app.ts
+│   │   ├── app.html
+│   │   └── app.config.ts
+│   │
+│   ├── styles.css
+│   └── main.ts
+│
+├── screenshots/
+│
+├── angular.json
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
+```
+
+## ⚙️ Kurulum ve Çalıştırma
+
+Projeyi bilgisayarınızda çalıştırmak için aşağıdaki adımları takip edebilirsiniz.
+
+### Gereksinimler
+
+- Node.js
+- npm
+- Angular CLI
+
+### 1. Projeyi klonlayın
+
+```bash
+git clone REPOSITORY_URL
+```
+
+### 2. Proje klasörüne girin
+
+```bash
+cd expense-tracker
+```
+
+### 3. Gerekli paketleri yükleyin
+
+```bash
+npm install   ( Eğer eksik varsa kurulamsı gereken paket --> npm i -g @angular/cli)
+```
+
+### 4. Uygulamayı çalıştırın
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 5. Tarayıcıdan uygulamaya erişin
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 💾 Veri Saklama
 
-```bash
-ng generate --help
-```
+Uygulamada oluşturulan işlemler tarayıcının Local Storage alanında saklanmaktadır.
 
-## Building
+Veriler JSON formatına dönüştürülerek kaydedilir ve uygulama tekrar açıldığında Local Storage üzerinden okunarak kullanıcıya gösterilir.
 
-To build the project run:
+Uygulama herhangi bir backend veya veritabanı kullanmamaktadır.
 
-```bash
-ng build
-```
+## 🎯 Projenin Amacı ve Kazanımlar
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Bu proje geliştirilirken Angular framework'ünün temel özelliklerini öğrenmek ve uygulamalı olarak kullanmak amaçlanmıştır.
 
-## Running unit tests
+Proje sürecinde aşağıdaki konularda deneyim kazanılmıştır:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular Standalone Components yapısı
+- TypeScript kullanımı
+- Angular Signals ve Computed Signals
+- Component tabanlı mimari
+- Dependency Injection
+- Service kullanımı ve veri yönetimi
+- CRUD işlemleri
+- Local Storage kullanımı
+- Form yönetimi ve doğrulama
+- Tailwind CSS ile arayüz geliştirme
