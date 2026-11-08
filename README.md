@@ -15,19 +15,19 @@ Proje, Angular ve Tailwind CSS kullanılarak geliştirilmiştir. Verilerin sakla
 
 ### İşlem Listesi ve Filtreleme
 
-![Transactions](expense-tracker/screenshots/liste.png)
+![Transactions](screenshots/liste.png)
 
-![Transactions](expense-tracker/screenshots/gelirFiltresi.png)
+![Transactions](screenshots/gelirFiltresi.png)
 
-![Transactions](expense-tracker/screenshots/giderFiltresi.png)
+![Transactions](screenshots/giderFiltresi.png)
 
 ### İşlem Ekleme
 
-![Add_Transactions](expense-tracker/screenshots/yeniEkle.png)
+![Add_Transactions](screenshots/yeniEkle.png)
 
 ### İşlem Güncelleme
 
-![Update_Transactions](expense-tracker/screenshots/guncelle.png)
+![Update_Transactions](screenshots/guncelle.png)
 
 ---
 
