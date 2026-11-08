@@ -10,7 +10,8 @@ Proje, Angular ve Tailwind CSS kullanılarak geliştirilmiştir. Verilerin sakla
 
 ### Ana Sayfa (Dashboard)
 
-![DashBoard](expense-tracker/screenshots/anasayfa.png)
+![DashBoard](expense-tracker/blob/main/screenshots/anasayfa.png)
+
 
 ### İşlem Listesi ve Filtreleme
 
