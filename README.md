@@ -5,6 +5,9 @@ Bu proje, kişisel gelir ve giderlerin takip edilebilmesi amacıyla geliştirilm
 Uygulama sayesinde kullanıcılar gelir ve gider işlemlerini ekleyebilir, düzenleyebilir, silebilir ve finansal durumlarını tek bir ekran üzerinden takip edebilir.
 
 Proje, Angular ve Tailwind CSS kullanılarak geliştirilmiştir. Verilerin saklanması için tarayıcının Local Storage özelliğinden yararlanılmıştır.
+## 🌐 Canlı Demo
+
+[Harcama Takip Uygulamasını Görüntüle](https://expense-tracker-red-mu-93.vercel.app)
 
 ## 📸 Uygulama Görselleri
 
